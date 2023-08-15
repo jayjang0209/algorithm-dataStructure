@@ -15,17 +15,22 @@ from collections import deque
 
 class Solution:
   # Time complexity: O(N)
+  # > traverses each node once
+  
   # Space complexity: O(N)
+  # > needs to store each node in the queue
 
   def traverse(self, root):
     result = []
     if root is None:
       return result
 
+	# BFS
     queue = deque()
     queue.append(root)
 
     while queue:
+      # traverse each level
       nodes_in_cur_level = []
 
       for _ in range(len(queue)):
@@ -38,4 +43,5 @@ class Solution:
           queue.append(v.right)
       
       result.append(nodes_in_cur_level)
+      
     return result
